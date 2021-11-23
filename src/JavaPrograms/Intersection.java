@@ -11,8 +11,10 @@ public class Intersection {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
+
+        //Solution 1
         int[] nNumbers = new int[n];
-        ArrayList<Integer> outputArray = new ArrayList<Integer>();
+        ArrayList<Integer> outputArray = new ArrayList<>();
         for (int i = 0; i < n; i ++){
             nNumbers[i] = scan.nextInt();
         }
@@ -28,5 +30,25 @@ public class Intersection {
             }
         }
         System.out.println(outputArray);
+
+        //Solution 2 without nested loops and using the strategy inverse indexing
+        int number;
+        int[] NcounterArray = new int[2001];
+        int[] McounterArray = new int[2001];
+        for (int i = 0; i < n; i ++){
+            number = scan.nextInt();
+            number += 1000;
+            NcounterArray[number] ++;
+        }
+        int m2 = scan.nextInt();
+        for (int i = 0; i < m2; i ++){
+            number = scan.nextInt();
+            number += 1000;
+            McounterArray[number] ++;
+        }
+        for (int i = 0; i < 2001; i ++){
+            if ((McounterArray[i] > 0) && (NcounterArray[i] > 0))
+                System.out.print(i - 1000 + " ");
+        }
     }
 }

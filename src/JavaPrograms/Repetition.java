@@ -5,11 +5,26 @@ Write a program that reads n < 100 then read n numbers each of which is between 
 Then, your program will find the numbers that exist more than once and write them on the screen.
  */
 
+
 import java.util.*;
 public class Repetition {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int N = scan.nextInt();
+
+        //Solution 1
+        int n = scan.nextInt(), number;
+        int[] counterArray = new int[1001];
+        for (int i = 0; i < n; i ++){
+            number = scan.nextInt();
+            counterArray[number] ++;
+        }
+        for (int i = 0; i < 1001; i ++){
+            if (counterArray[i] > 1)
+                System.out.println(i);
+        }
+
+        //Solution2
         int[] array = new int[N];
         int[] outputArray = new int[N];
         for (int i = 0; i < N; i++) {
@@ -17,9 +32,9 @@ public class Repetition {
         }
         int l = 0;
         for (int i = 0; i < N; i++) {
-            for (int n = i + 1; n < N; n++) {
-                if ((array[n] == array[i]) && (checkExists(N, outputArray, array[n]) == 0)) {
-                    outputArray[l] = array[n];
+            for (int r = i + 1; r < N; r++) {
+                if ((array[r] == array[i]) && (checkExists(N, outputArray, array[r]) == 0)) {
+                    outputArray[l] = array[r];
                     l++;
                 }
             }
@@ -41,3 +56,5 @@ public class Repetition {
         return check;
     }
 }
+
+
