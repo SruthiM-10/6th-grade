@@ -1,7 +1,7 @@
 package JavaPrograms;
 
 /*
-Write a program that gives a sorted output of numbers given in two sorted arrays in ascending order of sizes n < 100 and m < 100.
+Write a program that gives a sorted output of numbers given in two *sorted arrays* in ascending order of sizes n < 100 and m < 100.
 The numbers in the array may not be between -1000 and 1000. Read n, then n numbers; read m, then m numbers.
 Write the sorted output on screen in ascending order. You cannot use nested loops.
  */
@@ -21,30 +21,21 @@ public class UnionWithRepetition{
             MArray[i] = scan.nextInt();
         }
         int i1 = 0, i2 = 0;
-        while (i1 < n || i2 < m){
-            if (i1 < n && i2 < m){
-                if (MArray[i2] < NArray[i1]){
-                    System.out.print(MArray[i2] + " ");
-                    i2 ++;
-                }
-                else if(MArray[i2] == NArray[i1]){
-                    System.out.print(NArray[i1] + " " + MArray[i2] + " ");
-                    i2 ++;
-                    i1 ++;
-                }
-                else{
-                    System.out.print(NArray[i1] + " ");
-                    i1 ++;
-                }
-            }
-            else if(i1 < n && i2 >= m){
-                System.out.print(NArray[i1] + " ");
-                i1 ++;
-            }
-            else{
+        while (i1 < n && i2 < m){
+            if (MArray[i2] < NArray[i1]){
                 System.out.print(MArray[i2] + " ");
                 i2 ++;
             }
+            else{
+                System.out.print(NArray[i1] + " ");
+                i1 ++;
+            }
+        }
+        for(; i1 < n; i1 ++){
+            System.out.print(NArray[i1] + " ");
+        }
+        for(; i2 < m; i2 ++){
+            System.out.print(MArray[i2] + " ");
         }
     }
 }
