@@ -24,7 +24,21 @@ public class Repetition {
                 System.out.println(i);
         }
 
-        //Solution2
+        //Solution 2
+        int n2 = scan.nextInt(), counter;
+        int[] numbers = new int[n2];
+        for (int i = 0; i < n2; i ++){ numbers[i] = scan.nextInt(); }
+        for (int num = 1; num < 1001; num ++){
+            counter = 0;
+            for(int i = 0; i < n2; i ++){
+                if (numbers[i] == num)
+                    counter ++;
+            }
+            if (counter > 1)
+                System.out.println(num);
+        }
+
+        //Solution 3
         int[] array = new int[N];
         int[] outputArray = new int[N];
         for (int i = 0; i < N; i++) {
