@@ -20,7 +20,9 @@ Result
  */
 
 import java.util.*;
+import java.lang.*;
 public class Subsequence{
+//Solution 1
     public static void main (String[] args){
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt(), sum = 0, sumsIndex = 0;
@@ -37,5 +39,19 @@ public class Subsequence{
         }
         Arrays.sort(sums);
         System.out.print(sums[sums.length-1]);
+    }
+//Solution 2
+    public static void Solution2(){
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt(), maxTotal = -100, total = 0;
+        int[] sequence = new int[n];
+        for (int i = 0; i < n; i ++){ sequence[i] = scan.nextInt();}
+        for (int start = 0; start < n; start ++){
+            for (int end = start; end < n; end ++){
+                total += sequence[end];
+                maxTotal = Math.max(maxTotal, total);
+            }
+        }
+        System.out.println(maxTotal);
     }
 }

@@ -13,6 +13,7 @@ Find the amicable numbers between 1 and 10,000. Output each pair in one line, sm
 The output should be in increasing order.
  */
 public class AmicableNumbers{
+//Solution 1
     public static void main(String[] args){
         int sum1, sum2, num2;
         for (int num1 = 1; num1 <= 10000; num1 ++){
@@ -33,6 +34,21 @@ public class AmicableNumbers{
                 }
             }
 
+        }
+    }
+// Solution 2 - with an array
+    public static void Solution2 (){
+        int[] sums = new int[10001];
+        for (int num = 2; num <= 10000; num ++){
+            for (int divisor = 1; divisor <= num/2; divisor ++){
+                if (num % divisor == 0)
+                    sums[num] += divisor;
+            }
+        }
+        for (int num = 2; num <= 10000; num ++){
+            int num2 = sums[num];
+            if (sums[num] < 10000 && sums[num2] == num && num < num2)
+                System.out.println(num + " " + num2);
         }
     }
 }
